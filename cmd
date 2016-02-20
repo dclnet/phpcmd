@@ -18,7 +18,13 @@ try {
 			if ($fun && function_exists($fun)) {
 				$funRef = new ReflectionFunction($fun);
 				$params = $funRef->getParameters();
-				if (count($params) > count($args)) {
+				$required = 0;
+				foreach($params as $row) {
+					if (!$row->isOptional()) {
+						$required++;
+					}
+				}
+				if ($required > count($args)) {
 					throw new Exception("function {$fun} missing arguments.\n".implode("\n", $params));
 				}
 				$result = call_user_func_array($fun, $args);
