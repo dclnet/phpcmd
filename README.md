@@ -1,12 +1,16 @@
 # phpcmd
 命令行模式执行php的小助手程序
+
 // file d:\file\test.php
+
 <?php
 function doit($name, $age) {
   echo $name.', '.$age;
 }
 ?>
+
 //----------------------
+
 d:\file 文件夹下：
 test.php
 cmd
